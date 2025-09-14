@@ -14,7 +14,7 @@ local Box = require(ReplicatedStorage.UI.Components.Box)
 local Gloss = require(ReplicatedStorage.UI.FX.Gloss)
 local Stroke = require(ReplicatedStorage.UI.FX.Stroke)
 
-local SHADOW_DEPTHS = {0, 1, 2}
+local SHADOW_DEPTHS = {0, 0, 0}
 
 --- Large glossy inverted text with a deep drop shadow.
 local function Title(
