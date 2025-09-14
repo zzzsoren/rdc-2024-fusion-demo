@@ -19,8 +19,6 @@ local Window = require(ReplicatedStorage.UI.Components.Window)
 local CornerTypes = require(ReplicatedStorage.UI.FX.CornerTypes)
 local InventoryLayout = require(ReplicatedStorage.UI.Inventory.InventoryLayout)
 local InventorySlot = require(ReplicatedStorage.UI.Inventory.InventorySlot)
-local InventoryPreview = require(ReplicatedStorage.UI.Inventory.InventoryPreview)
-local InventoryDetails = require(ReplicatedStorage.UI.Inventory.InventoryDetails)
 
 export type SlotData = {
 	Item: Fusion.UsedAs<Items.Item?>,
@@ -49,41 +47,37 @@ local function Inventory(
 		Title = Title,
 
 		InventoryLayout = InventoryLayout,
-		InventorySlot = InventorySlot,
-		InventoryPreview = InventoryPreview,
-		InventoryDetails = InventoryDetails
+		InventorySlot = InventorySlot
 	})
 
 	local selectedSlot = scope:Value(1)
-	local selectedItem = scope:Computed(function(use)
-		return use(props.Slots[use(selectedSlot)].Item)
-	end)
 
 	return 
 		Shared.palette
-		:is(Styles.colours.yellow)
+		:is(Styles.colours.blackdesert)
 		:during(function()
 			return scope:Window {
 				Visible = props.Visible,
+
 				[Children] = {
 					scope:CloseButton {
-						Position = UDim2.new(1, -6, 0, 6),
+						Position = UDim2.new(0.5, -6, -0.2, 6),
 						AnchorPoint = Vector2.new(0.5, 0.5),
 		
 						OnActivated = props.DoClose
 					},
 		
 					scope:Title {
-						Position = UDim2.new(0.5, 0, 0, 12),
+						Position = UDim2.new(0.5, 0, 0.08, 0),
 						AnchorPoint = Vector2.new(0.5, 0.5),
 		
-						Text = "Inventory"
+						Text = "Bagpack"
 					},
 		
 					scope:Box {
 						Name = "Contents",
 						
-						Position = UDim2.new(0.5, 0, 1, -16),
+						Position = UDim2.new(0.52, 0, 1, -16),
 						AnchorPoint = Vector2.new(0.5, 1),
 						Size = UDim2.new(1, -32, 1, -66),
 		
@@ -97,7 +91,7 @@ local function Inventory(
 										Selected = scope:Computed(function(use)
 											return use(selectedSlot) == index
 										end),
-		
+
 										OnActivated = function()
 											if peek(data.Amount) > 0 then
 												selectedSlot:set(index)
@@ -105,24 +99,7 @@ local function Inventory(
 										end
 									}
 								end
-							),
-		
-							Preview = scope:InventoryPreview {
-								ActiveItem = selectedItem
-							},
-							
-							Details = scope:InventoryDetails {
-								ActiveItem = selectedItem,
-								DoPlant = function()
-									props.DoPlant(peek(selectedSlot))
-								end,
-								DoGive = function()
-									props.DoGive(peek(selectedSlot))
-								end,
-								DoThrow = function()
-									props.DoThrow(peek(selectedSlot))
-								end
-							},
+							)
 						}
 					}
 				}
