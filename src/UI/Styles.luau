@@ -23,12 +23,13 @@ end
 --- Predefined colours and metrics for use throughout UI modules.
 return {
 	fonts = {
-		title = Enum.Font.LuckiestGuy,
-		body = Enum.Font.Cartoon
+		title = Enum.Font.Arial,
+		body = Enum.Font.FredokaOne
+
 	},
 
 	textSizes = {
-		title = 48,
+		title = 36,
 		bigger = 36,
 		header = 24,
 		buttons = 24,
@@ -37,6 +38,19 @@ return {
 	},
 
 	colours = {
+blackdesert = Palette {
+	fill = {
+		light = Color3.fromHex("#E6D8C3"),  -- Pale beige for slot highlights (luma ~0.85 for visibility)
+		mid = Color3.fromHex("#8B6F47"),    -- Medium brown base (earth tones evoke leather/wood)
+		dark = Color3.fromHex("#4A3B2A")    -- Deep brown shadows (contrast ratio >4.5:1 w/ white text)
+	},
+	stroke = {
+		light = Color3.fromHex("#D4A017"),  -- Bright gold borders for accents
+		mid = Color3.fromHex("#B8860B"),    -- Muted gold mid-tones
+		dark = Color3.fromHex("#8B6508")    -- Darkened gold for depth
+	},
+	text = Color3.fromHex("#000000")     -- Crisp white for item labels (quantities could tint #FFFF00 if scripted separately)
+},
 		platinum = Palette {
 			fill = {
 				light = Color3.fromHex("#FFFFFF"),
