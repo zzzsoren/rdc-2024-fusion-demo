@@ -50,7 +50,7 @@ local function InventorySlot(
 	return scope:Box {
 		Name = `Slot {props.Index}`,
 
-		Colour = palette.stroke.light,
+		Colour = palette.stroke.mid,
 		LayoutOrder = props.Index,
 
 		OnActivated = props.OnActivated,
