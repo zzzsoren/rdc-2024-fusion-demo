@@ -31,7 +31,7 @@ local function CloseButton(
 		Name = "Close Button",
 		Position = props.Position,
 		AnchorPoint = props.AnchorPoint,
-		Size = UDim2.fromOffset(36, 36),
+		Size = UDim2.fromOffset(48, 48),
 
 		[Children] = 
 			Shared.palette
@@ -39,7 +39,7 @@ local function CloseButton(
 			:during(function()
 				return scope:Button {
 					Text = "X",
-					TextSize = Styles.textSizes.header,
+					TextSize = Styles.textSizes.bigger,
 					Size = UDim2.fromScale(1, 1),
 					
 					OnActivated = props.OnActivated
