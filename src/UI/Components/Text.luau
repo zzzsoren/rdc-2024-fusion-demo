@@ -12,7 +12,9 @@ local Shared = require(Package.UI.Shared)
 
 local FONT_SCALES = {
 	[Enum.Font.Cartoon] = 1.209,
-	[Enum.Font.LuckiestGuy] = 1.000
+	[Enum.Font.LuckiestGuy] = 1.000,
+	[Enum.Font.Arial] = 1.000,
+	[Enum.Font.FredokaOne] = 1.000
 }
 
 --- An auto-sized text label that automatically adopts the current palette.
